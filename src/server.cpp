@@ -17,7 +17,7 @@ void echo(int sock, sockaddr_in* addr, char* buffer)
 int main()
 {
     char buffer[512];
-
+    
     WORD sockVersion = MAKEWORD(2, 2);
     WSADATA wsaData;
     WSAStartup(sockVersion, &wsaData);
