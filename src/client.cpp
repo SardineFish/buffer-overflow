@@ -10,6 +10,9 @@ int main()
 {
     char buffer[] = "Hello World!";
 
+    int add = (int)GetProcAddress(GetModuleHandleA("kernel32.dll"), "LoadLibraryA");
+    printf("%x\n", add);
+
     WORD sockVersion = MAKEWORD(2, 2);
     WSADATA wsaData;
     WSAStartup(sockVersion, &wsaData);
