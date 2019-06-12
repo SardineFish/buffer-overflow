@@ -8,20 +8,20 @@
 
 void echo(int sock, sockaddr_in* addr, char* buffer)
 {
-    char text[1024];
+    char text[128];
     strcpy(text, (char*)buffer);
     printf("%s\n", text);
-    sendto(sock, text, 1024, 0, (sockaddr*)addr, sizeof(sockaddr_in));
+    sendto(sock, text, 128, 0, (sockaddr*)addr, sizeof(sockaddr_in));
 }
 
 int main()
 {
-    char buffer[65536];
+    char buffer[512];
 
     WORD sockVersion = MAKEWORD(2, 2);
     WSADATA wsaData;
     WSAStartup(sockVersion, &wsaData);
-
+    
     int sock = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
     sockaddr_in addr;
     memset(&addr, 0, sizeof(addr));
@@ -40,7 +40,7 @@ int main()
     {
         sockaddr_in sender;
         int addrLen = sizeof(sender);
-        recvfrom(sock, buffer, 65536, 0, (sockaddr*)&sender, &addrLen);
+        recvfrom(sock, buffer, 512, 0, (sockaddr*)&sender, &addrLen);
         echo(sock, &sender, buffer);
     }
 }

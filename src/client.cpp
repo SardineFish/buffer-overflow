@@ -18,11 +18,8 @@ int main()
     sockaddr_in addr;
     memset(&addr, 0, sizeof(addr));
     addr.sin_family = AF_INET;
-    addr.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");
+    addr.sin_addr.s_addr = inet_addr("127.0.0.1");
     addr.sin_port = htons(PORT);
 
-    while(true)
-    {
-        sendto(sock, buffer, sizeof(buffer), 0, (sockaddr*)&addr, sizeof(addr));
-    }
+    sendto(sock, buffer, sizeof(buffer), 0, (sockaddr*)&addr, sizeof(addr));
 }
