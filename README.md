@@ -24,7 +24,7 @@ $ ./bin/client
 
 **Notice**
 
-The server will setup an UDP server on port `3000`, and the client will connect to the server. The port can be edited in `server.cpp`.
+The server will setup an UDP echo server on `0.0.0.0:3000`, and the client will connect to the server. The port can be edited in `server.cpp`.
 
 ## Usage
 Write the code in `client.cpp` to perform a buffer overflow attack on the server.
